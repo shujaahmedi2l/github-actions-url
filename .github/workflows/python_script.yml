@@ -1,0 +1,26 @@
+name: Python Script Action
+
+on:
+  push:
+    branches:
+      - master  # You can specify the branch you want to trigger the action
+
+jobs:
+  run_python_script:
+    runs-on: ubuntu-latest  # You can change the operating system as needed
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2  # This step checks out your repository's code
+
+    - name: Set up Python
+      uses: actions/setup-python@v2  # This step sets up Python environment
+      with:
+        python-version: '3.x'  # You can specify the Python version you need
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+
+    - name: Run Python script
+      run: python your_script.py  # Replace 'your_script.py' with the name of your Python script
